@@ -7,6 +7,8 @@
   margin: 0 auto;
 }
 
+.view-id-vista_de_civil .view-content .views-row .views-field-nothing { margin-bottom: 20px; }
+
 #content-wrap table#go_sigo { border: none; }
 #go_sigo tbody tr td { 
   border: none;
