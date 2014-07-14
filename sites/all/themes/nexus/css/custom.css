@@ -1,0 +1,36 @@
+
+#block-views-vista-de-civil-block-2, #block-views-vista-de-civil-block { display: none; }
+#block-block-1 h2, #block-block-2 h2, #block-block-3 h2 { cursor: pointer; }
+
+.view-id-vista_de_civil .view-content .views-row .views-field-field-image {
+  width: 90%;
+  margin: 0 auto;
+}
+
+#content-wrap table#go_sigo { border: none; }
+#go_sigo tbody tr td { 
+  border: none;
+  padding: 0;
+}
+
+#go_sigo tbody tr td:first-child + td {
+  float: right;
+  margin-bottom: 110px;
+}
+
+.page-node #content-wrap #go_sigo tbody tr td img, .page-node #content-wrap #go_sigo tbody tr td p a img { border: none }
+#footer-sitemap .fs-block-content .main-menu ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+#footer-sitemap .fs-block-content .main-menu ul li ul li a { font-weight: normal; }
+
+#footer-sitemap .fs-block-content .main-menu ul li { margin-right: 45px; }
+#footer-sitemap .fs-block-content .main-menu ul li.last { margin-right: 0; }
+
+#block-block-4 p { 
+  color: #fff;
+  margin-bottom: 0;
+}
