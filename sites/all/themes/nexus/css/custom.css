@@ -43,15 +43,15 @@
 #page #preface-area { padding: 0; }
 #preface-area .container .row .preface-block {
   padding: 0;
-  border-left: 1px solid #c9e07d;
-  border-right: 1px solid #6ead2e;
-  background: #a2ca5a;
+  border-left: 1px solid #0A6606;
+  border-right: 1px solid #045800;
+  background: #30912C;
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-  background: -moz-linear-gradient(top, #a2ca5a 0%, #9fc858 28%, #8abc49 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2ca5a), color-stop(28%,#9fc858), color-stop(100%,#8abc49));
-  background: -webkit-linear-gradient(top, #a2ca5a 0%,#9fc858 28%,#8abc49 100%);
-  background: -o-linear-gradient(top, #a2ca5a 0%,#9fc858 28%,#8abc49 100%);
-  background: -ms-linear-gradient(top, #a2ca5a 0%,#9fc858 28%,#8abc49 100%);
+  background: -moz-linear-gradient(top, #30912C 0%, #3CA238 28%, #3C9C38 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#30912C), color-stop(28%,#3CA238), color-stop(100%,#3C9C38));
+  background: -webkit-linear-gradient(top, #30912C 0%,#3CA238 28%,#3C9C38 100%);
+  background: -o-linear-gradient(top, #30912C 0%,#3CA238 28%,#3C9C38 100%);
+  background: -ms-linear-gradient(top, #30912C 0%,#3CA238 28%,#3C9C38 100%);
 }
 
 #preface-area .container .row .preface-block .region:hover{
