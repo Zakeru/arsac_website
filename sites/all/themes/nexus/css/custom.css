@@ -1,3 +1,6 @@
+@media (min-width: 1200px){
+  #preface-area .container { max-width: 940px; }
+}
 
 #block-views-vista-de-civil-block-2, #block-views-vista-de-civil-block { display: none; }
 #block-block-1 h2, #block-block-2 h2, #block-block-3 h2 { cursor: pointer; }
@@ -35,4 +38,46 @@
 #block-block-4 p { 
   color: #fff;
   margin-bottom: 0;
+}
+
+#page #preface-area { padding: 0; }
+#preface-area .container .row .preface-block {
+  background: url(http://livedemo00.template-help.com/drupal_47882/sites/all/themes/theme845/images/servise-block.gif) left top repeat #e3be11;
+  padding: 0;
+}
+
+#preface-area .container .row .preface-block:after, #preface-area .container .row .preface-block:before {
+  display: block;
+  width: 1px;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: '';
+  background: url(http://livedemo00.template-help.com/drupal_47882/sites/all/themes/theme845/images/service-border.gif) right top no-repeat #f2e21a;
+  overflow: hidden;
+}
+
+#preface-area .container .row .preface-block:after {
+  right: 0;
+  background-position: left top;
+  background-color: #d6a20a
+}
+
+#preface-area .container .row .preface-block .region:hover{
+  background: url(http://livedemo00.template-help.com/drupal_47882/sites/all/themes/theme845/images/servise-block-hover.gif)  0% 500px no-repeat;
+  background-position: 0% 0%;
+  background-repeat: repeat-x;
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+#block-block-1, #block-block-2, #block-block-3 { 
+  margin-bottom: 0;
+  height: 192px;
 }

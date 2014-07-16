@@ -483,7 +483,8 @@ a.frmore{
 }
 
 #preface-area {
-  background: none repeat scroll 0 0 #1e801b;
+  /*background: none repeat scroll 0 0 #1e801b;*/
+  background: url(http://livedemo1.template-help.com/drupal_47882/sites/all/themes/theme845/images/header-bottom.gif) center top repeat-x #e3be11;
   border-bottom: 5px solid #1B5719;
   border-top: 5px solid #1B5719;
   padding: 40px 0 20px;
