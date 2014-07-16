@@ -42,39 +42,27 @@
 
 #page #preface-area { padding: 0; }
 #preface-area .container .row .preface-block {
-  background: url(http://livedemo00.template-help.com/drupal_47882/sites/all/themes/theme845/images/servise-block.gif) left top repeat #e3be11;
   padding: 0;
-}
-
-#preface-area .container .row .preface-block:after, #preface-area .container .row .preface-block:before {
-  display: block;
-  width: 1px;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  content: '';
-  background: url(http://livedemo00.template-help.com/drupal_47882/sites/all/themes/theme845/images/service-border.gif) right top no-repeat #f2e21a;
-  overflow: hidden;
-}
-
-#preface-area .container .row .preface-block:after {
-  right: 0;
-  background-position: left top;
-  background-color: #d6a20a
+  border-left: 1px solid #c9e07d;
+  border-right: 1px solid #6ead2e;
+  background: #a2ca5a;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #a2ca5a 0%, #9fc858 28%, #8abc49 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a2ca5a), color-stop(28%,#9fc858), color-stop(100%,#8abc49));
+  background: -webkit-linear-gradient(top, #a2ca5a 0%,#9fc858 28%,#8abc49 100%);
+  background: -o-linear-gradient(top, #a2ca5a 0%,#9fc858 28%,#8abc49 100%);
+  background: -ms-linear-gradient(top, #a2ca5a 0%,#9fc858 28%,#8abc49 100%);
 }
 
 #preface-area .container .row .preface-block .region:hover{
-  background: url(http://livedemo00.template-help.com/drupal_47882/sites/all/themes/theme845/images/servise-block-hover.gif)  0% 500px no-repeat;
-  background-position: 0% 0%;
-  background-repeat: repeat-x;
-  display: block;
-  width: 100%;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  overflow: hidden;
-  position: relative;
+  background: #8aac4e;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod…EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #8aac4e 0%, #84a74b 38%, #709640 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8aac4e), color-stop(38%,#84a74b), color-stop(100%,#709640));
+  background: -webkit-linear-gradient(top, #8aac4e 0%,#84a74b 38%,#709640 100%);
+  background: -o-linear-gradient(top, #8aac4e 0%,#84a74b 38%,#709640 100%);
+  background: -ms-linear-gradient(top, #8aac4e 0%,#84a74b 38%,#709640 100%);
+  background: linear-gradient(to bottom, #8aac4e 0%,#84a74b 38%,#709640 100%);
 }
 
 #block-block-1, #block-block-2, #block-block-3 { 
