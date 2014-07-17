@@ -3,7 +3,7 @@
 }
 
 #block-views-vista-de-civil-block-2, #block-views-vista-de-civil-block { display: none; }
-#block-block-1 h2, #block-block-2 h2, #block-block-3 h2 { cursor: pointer; }
+#block-block-1, #block-block-2, #block-block-3 { cursor: pointer; }
 
 .view-id-vista_de_civil .view-content .views-row .views-field-field-image {
   width: 90%;

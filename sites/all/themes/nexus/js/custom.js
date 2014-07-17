@@ -38,22 +38,34 @@ jQuery(window).load(function() {
 
 ( function($) {
   $(document).ready(function(){
-    $('#block-block-1 h2').click(function(){
+    $('#block-block-1').click(function(){
       $('#block-views-vista-de-civil-block-1').fadeIn('fast');
       $('#block-views-vista-de-civil-block').fadeOut('fast');
       $('#block-views-vista-de-civil-block-2').fadeOut('fast');
+
+      $('html, body').animate({
+        scrollTop: $(".view-display-id-block_1").offset().top
+      }, 1000);
     });
 
-    $('#block-block-2 h2').click(function(){
+    $('#block-block-2').click(function(){
       $('#block-views-vista-de-civil-block').fadeIn('fast');
       $('#block-views-vista-de-civil-block-1').fadeOut('fast');
       $('#block-views-vista-de-civil-block-2').fadeOut('fast');
+
+      $('html, body').animate({
+        scrollTop: $(".view-display-id-block").offset().top
+      }, 1000);
     });
 
-    $('#block-block-3 h2').click(function(){
+    $('#block-block-3').click(function(){
       $('#block-views-vista-de-civil-block').fadeOut('fast');
       $('#block-views-vista-de-civil-block-1').fadeOut('fast');
       $('#block-views-vista-de-civil-block-2').fadeIn('fast');
+
+      $('html, body').animate({
+        scrollTop: $(".view-display-id-block_2").offset().top
+      }, 1000);
     });
   });
 })(jQuery);

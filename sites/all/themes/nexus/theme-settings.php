@@ -99,7 +99,96 @@ function nexus_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Slide URL'),
     '#default_value' => theme_get_setting('slide3_url','nexus'),
   );
+
+  $form['nexus_settings']['slideshow']['slide4'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Slide 4'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['nexus_settings']['slideshow']['slide4']['slide4_head'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide Headline'),
+    '#default_value' => theme_get_setting('slide4_head','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide4']['slide4_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Slide Description'),
+    '#default_value' => theme_get_setting('slide4_desc','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide4']['slide4_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide URL'),
+    '#default_value' => theme_get_setting('slide4_url','nexus'),
+  );
+
+  $form['nexus_settings']['slideshow']['slide5'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Slide 5'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['nexus_settings']['slideshow']['slide5']['slide5_head'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide Headline'),
+    '#default_value' => theme_get_setting('slide5_head','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide5']['slide5_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Slide Description'),
+    '#default_value' => theme_get_setting('slide5_desc','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide5']['slide5_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide URL'),
+    '#default_value' => theme_get_setting('slide5_url','nexus'),
+  );
+
+  $form['nexus_settings']['slideshow']['slide6'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Slide 6'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['nexus_settings']['slideshow']['slide6']['slide6_head'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide Headline'),
+    '#default_value' => theme_get_setting('slide6_head','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide6']['slide6_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Slide Description'),
+    '#default_value' => theme_get_setting('slide6_desc','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide6']['slide6_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide URL'),
+    '#default_value' => theme_get_setting('slide6_url','nexus'),
+  );
+
+  $form['nexus_settings']['slideshow']['slide7'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Slide 7'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['nexus_settings']['slideshow']['slide7']['slide7_head'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide Headline'),
+    '#default_value' => theme_get_setting('slide7_head','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide7']['slide7_desc'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Slide Description'),
+    '#default_value' => theme_get_setting('slide7_desc','nexus'),
+  );
+  $form['nexus_settings']['slideshow']['slide7']['slide7_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Slide URL'),
+    '#default_value' => theme_get_setting('slide7_url','nexus'),
+  );
+
   $form['nexus_settings']['slideshow']['slideimage'] = array(
-    '#markup' => t('To change the Slide Images, Replace the slide-image-1.jpg, slide-image-2.jpg and slide-image-3.jpg in the images folder of the theme folder.'),
+    '#markup' => t('To change the Slide Images, Replace the slide-image-1.jpg, slide-image-2.jpg, slide-image-3.jpg, slide-image-4.jpg, slide-image-5.jpg, slide-image-6.jpg and slide-image-7.jpg in the images folder of the theme folder.'),
   );
 }

@@ -100,6 +100,10 @@
     $slide1_head = check_plain(theme_get_setting('slide1_head','nexus'));   $slide1_desc = check_markup(theme_get_setting('slide1_desc','nexus'), 'full_html'); $slide1_url = check_plain(theme_get_setting('slide1_url','nexus'));
     $slide2_head = check_plain(theme_get_setting('slide2_head','nexus'));   $slide2_desc = check_markup(theme_get_setting('slide2_desc','nexus'), 'full_html'); $slide2_url = check_plain(theme_get_setting('slide2_url','nexus'));
     $slide3_head = check_plain(theme_get_setting('slide3_head','nexus'));   $slide3_desc = check_markup(theme_get_setting('slide3_desc','nexus'), 'full_html'); $slide3_url = check_plain(theme_get_setting('slide3_url','nexus'));
+    $slide4_head = check_plain(theme_get_setting('slide4_head','nexus'));   $slide4_desc = check_markup(theme_get_setting('slide4_desc','nexus'), 'full_html'); $slide4_url = check_plain(theme_get_setting('slide4_url','nexus'));
+    $slide5_head = check_plain(theme_get_setting('slide5_head','nexus'));   $slide5_desc = check_markup(theme_get_setting('slide5_desc','nexus'), 'full_html'); $slide5_url = check_plain(theme_get_setting('slide5_url','nexus'));
+    $slide6_head = check_plain(theme_get_setting('slide6_head','nexus'));   $slide6_desc = check_markup(theme_get_setting('slide6_desc','nexus'), 'full_html'); $slide6_url = check_plain(theme_get_setting('slide6_url','nexus'));
+    $slide7_head = check_plain(theme_get_setting('slide7_head','nexus'));   $slide7_desc = check_markup(theme_get_setting('slide7_desc','nexus'), 'full_html'); $slide7_url = check_plain(theme_get_setting('slide7_url','nexus'));
   ?>
   <div id="slidebox" class="flexslider">
     <ul class="slides">
@@ -127,6 +131,42 @@
           <div class="flex-caption">
             <h2><?php print $slide3_head; ?></h2><?php print $slide3_desc; ?>
             <a class="frmore" href="<?php print url($slide3_url); ?>"> <?php print t('READ MORE'); ?> </a>
+          </div>
+        <?php endif; ?>
+      </li>
+      <li>
+        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-4.jpg'; ?>"/>
+        <?php if($slide4_head || $slide4_desc) : ?>
+          <div class="flex-caption">
+            <h2><?php print $slide4_head; ?></h2><?php print $slide4_desc; ?>
+            <a class="frmore" href="<?php print url($slide4_url); ?>"> <?php print t('READ MORE'); ?> </a>
+          </div>
+        <?php endif; ?>
+      </li>
+      <li>
+        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-5.jpg'; ?>"/>
+        <?php if($slide5_head || $slide5_desc) : ?>
+          <div class="flex-caption">
+            <h2><?php print $slide5_head; ?></h2><?php print $slide5_desc; ?>
+            <a class="frmore" href="<?php print url($slide5_url); ?>"> <?php print t('READ MORE'); ?> </a>
+          </div>
+        <?php endif; ?>
+      </li>
+      <li>
+        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-6.jpg'; ?>"/>
+        <?php if($slide6_head || $slide6_desc) : ?>
+          <div class="flex-caption">
+            <h2><?php print $slide6_head; ?></h2><?php print $slide6_desc; ?>
+            <a class="frmore" href="<?php print url($slide6_url); ?>"> <?php print t('READ MORE'); ?> </a>
+          </div>
+        <?php endif; ?>
+      </li>
+      <li>
+        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/slide-image-7.jpg'; ?>"/>
+        <?php if($slide7_head || $slide7_desc) : ?>
+          <div class="flex-caption">
+            <h2><?php print $slide7_head; ?></h2><?php print $slide7_desc; ?>
+            <a class="frmore" href="<?php print url($slide7_url); ?>"> <?php print t('READ MORE'); ?> </a>
           </div>
         <?php endif; ?>
       </li>
