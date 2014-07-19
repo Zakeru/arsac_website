@@ -8,7 +8,7 @@
  */
 
 /**
- * Used by Views Aggregator to add debug info to the 'None' cache.
+ * Used by Views Aggregator to add performance stats to the 'None' cache.
  *
  * @ingroup views_cache_plugins
  */

@@ -6,7 +6,7 @@ fields that require little formatting/rendering, e.g. fields that do not need to
 be displayed with markup, prefixes or suffixes.
 Examples are fields used in View-driven maps (Google, OpenLayers, Leaflet).
 Not only will latitude and longitude fields benefit, but also any fields used
-to populate tables or marker balloons and not requiring rich rendering.
+to populate tables or marker balloons that require only simple rendering.
 
 INSTALLATION & CONFIGURATION
 ============================
@@ -21,27 +21,42 @@ accelerated.
 2) You can compare the performance of the view with and without the accelerator
 by switching on the summary statistics for selected users on the module's
 configuration page.
-Then open two browser windows and execute the same View once with and once
+Then open two browser windows and execute the same View once with, and once
 without this module's accelerated pseudo-cache. Compare and contrast.
 
 CAVEATS
 =======
 Remember: Views Accelerator works by not fully rendering Views results, i.e.
-it leaves the results pretty much in their raw form. If full rendering is
+it leaves most results pretty much in their raw form. If full rendering is
 important to you, you'll find little benefit from this module.
 You get the best benefits when:
 o your view produces a lot of items (rows * columns)
-o you don't have a pager or a pager with may items per page
-o the raw data is more important than the rendered data
+o you don't have a pager or  you have a pager with MANY items per page
+o near-raw data is more important than rendered data
 View-driven maps that cannot be cached are usually great beneficiaries.
 
-May not work on all fields in your View. Fields currently supported are:
-o general fields
-o taxonomy terms
-o images (public, produced in thumbnail format)
-o files
+May not fully work on all fields in your View. Fields currently supported are:
+o Plain fields
+o Taxonomy terms (plain or linked)
+o Images and their image styles (e.g., thumbnail, medium, large), plus links
+  to file or content
+o Files with the following field Formatters:
+   - Generic file
+   - URL to file
+   With File Entity module enabled:
+   - Download link, with token support
+   - Rendered file, in View modes: Default, Teaser, Preview
 o Geofields, drupal.org/project/geofield
-o Address Fields,drupal.org/project/addressfield
+o Address Fields, drupal.org/project/addressfield
+
+Of the "Multiple field settings" the following are somewhat supported:
+- "Display all values in the same row" toggle
+- display type (unordered, ordered or separated list)
+- display # values
+- starting from
+
+Again: many rendering options will be ignored. That is partly where the speed
+comes from!
 
 BACKGROUND
 ==========

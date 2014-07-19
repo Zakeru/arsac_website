@@ -44,7 +44,7 @@ jQuery(window).load(function() {
       $('#block-views-vista-de-civil-block-2').fadeOut('fast');
 
       $('html, body').animate({
-        scrollTop: $(".view-display-id-block_1").offset().top
+        scrollTop: $("#content_top").offset().top
       }, 1000);
     });
 
@@ -54,7 +54,7 @@ jQuery(window).load(function() {
       $('#block-views-vista-de-civil-block-2').fadeOut('fast');
 
       $('html, body').animate({
-        scrollTop: $(".view-display-id-block").offset().top
+        scrollTop: $("#content_top").offset().top
       }, 1000);
     });
 
@@ -64,7 +64,7 @@ jQuery(window).load(function() {
       $('#block-views-vista-de-civil-block-2').fadeIn('fast');
 
       $('html, body').animate({
-        scrollTop: $(".view-display-id-block_2").offset().top
+        scrollTop: $("#content_top").offset().top
       }, 1000);
     });
   });

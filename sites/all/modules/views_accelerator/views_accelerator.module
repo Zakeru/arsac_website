@@ -110,6 +110,7 @@ function views_accelerator_field_post_execute(&$handler, &$values, $is_accelerat
   }
   // Now, transfer the data back into the result set so it can be easily used.
   $field_id = "field_$id";
+  $delta_name = isset($handler->aliases['delta']) ? $handler->aliases['delta'] : NULL;
   foreach ($values as $row_id => &$value) {
     if ($is_accelerated && isset($values[$row_id]->_field_data[$alias])) {
       $handler->accelerated = TRUE;
@@ -118,17 +119,30 @@ function views_accelerator_field_post_execute(&$handler, &$values, $is_accelerat
         // Skip the language...
         $val = reset($entity->{$id});
         if (is_array($val)) {
-          // Support delta_offset and delta_limit for multi-values.
-          $offset = intval($handler->options['delta_offset']);
-          $count = ($handler->options['delta_limit'] == 'all') ? count($val) : $handler->options['delta_limit'];
-          foreach ($val as $i => $v) {
-            $is_display = ($i >= $offset) && ($i < $offset + $count);
-            $value->{$field_id}[$i] = $is_display ? views_accelerator_poor_mans_formatter($v) : array();
+          // For multi-values support row-grouping, delta_offset, delta_limit.
+          if ($handler->options['group_rows']) {
+            $offset = intval($handler->options['delta_offset']);
+            $count = ($handler->options['delta_limit'] == 'all') ? count($val) : $handler->options['delta_limit'];
           }
-          continue;
+          else {
+            $offset = isset($value->$delta_name) ? $value->$delta_name : 0;
+            $count = 1;
+          }
+          foreach ($val as $i => $v) {
+            if (($i >= $offset) && ($i < $offset + $count)) {
+              if (isset($value->nid)) {
+                $v['nid'] = $value->nid;
+              }
+              $formatted = views_accelerator_poor_mans_formatter($v, $handler);
+              $value->{$field_id}[] = $formatted;
+            }
+          }
+          if (!empty($value->{$field_id})) {
+            continue;
+          }
         }
       }
-      $value->{$field_id}[0] = array();
+      $value->{$field_id} = array();
     }
     else {
       // Original, time-consuming code.
@@ -143,10 +157,12 @@ function views_accelerator_field_post_execute(&$handler, &$values, $is_accelerat
  *
  * @param array $val
  *   Value array, taken from loaded entity.
+ * @param object $handler
+ *   The field handler
  *
  * @return array with 'raw' and 'rendered' entries.
  */
-function views_accelerator_poor_mans_formatter($val) {
+function views_accelerator_poor_mans_formatter($val, $handler = NULL) {
   $markup = '';
   if (isset($val)) {
     if (!is_array($val)) {
@@ -157,13 +173,13 @@ function views_accelerator_poor_mans_formatter($val) {
       $markup = $val['geom'];
     }
     elseif (isset($val['locality'])) {
-      return views_accelerator_render_address_field($val);
+      return views_accelerator_render_address_field($val, $handler);
     }
     elseif (isset($val['tid'])) {
-      return views_accelerator_render_taxonomy_term($val);
+      return views_accelerator_render_taxonomy_term($val, $handler);
     }
     elseif (isset($val['fid'])) {
-      return views_accelerator_render_file($val);
+      return views_accelerator_render_file($val, $handler);
     }
     else {
       // Probably a general 'value'. Includes Dates. EntityReferences will
@@ -184,10 +200,12 @@ function views_accelerator_poor_mans_formatter($val) {
  *
  * @param array $value
  *   Must have $value['locality'] set.
+ * @param object $handler
+ *   The field handler. Possible future extension, not used yet.
  *
  * @return array with 'raw' and 'rendered' entries.
  */
-function views_accelerator_render_address_field($value) {
+function views_accelerator_render_address_field($value, $handler = NULL) {
   $markup = '?';
   if (isset($value['thoroughfare']) && isset($value['administrative_area'])) {
     $markup = $value['thoroughfare'] . ', ' . $value['locality'] . ', ' . $value['administrative_area'];
@@ -209,20 +227,24 @@ function views_accelerator_render_address_field($value) {
  *
  * @param array $value
  *   Must have $value['tid'] set with the taxonomy term id.
+ * @param object $handler
+ *   The field handler. The term will be rendered as plain text, if the handler
+ *   formatter is set that way. All other formats result in hyperlinks.
  *
  * @return array with 'raw' and 'rendered' entries.
  */
-function views_accelerator_render_taxonomy_term($value) {
+function views_accelerator_render_taxonomy_term($value, $handler) {
   $tid = $value['tid'];
   $term = taxonomy_term_load($tid);
+  $markup = check_plain($term->name);
+  $formatter = $handler->options['type'];
+  $is_plain = ($formatter == 'taxonomy_term_reference_plain') || ($formatter == 'i18n_taxonomy_term_reference_plain');
+  $rendered = $is_plain
+    ? array('#markup' => $markup, '#access' => 1)
+    : array('#type' => 'link', '#title' => $markup, '#href' => "taxonomy/term/$tid", '#access' => 1);
   return array(
     'raw' => $value,
-    'rendered' => array(
-       '#type' => 'link',
-       '#title' => check_plain($term->name),
-       '#href' => "taxonomy/term/$tid",
-       '#access' => 1,
-    ),
+    'rendered' => $rendered,
   );
 }
 
@@ -230,35 +252,76 @@ function views_accelerator_render_taxonomy_term($value) {
  * Renders a value as an image file or general file.
  *
  * @param array $value
- *   Must have $value['type']=='image' or $value['filename'] set.
+ *   Must have at least $value['type']=='image' or $value['filename'] set.
+ * @param $object $handler
+ *   The field handler. If an image handler, all image styles are supported.
  *
  * @return array with 'raw' and 'rendered' entries.
  */
-function views_accelerator_render_file($value) {
-  if (isset($value['type']) && $value['type'] == 'image') {
-    return array(
-      'raw' => $value,
-      'rendered' => array(
-         '#theme' => 'image_formatter',
-         '#image_style' => 'thumbnail', // leave blank for original image?
-         '#item' => $value,
-         '#access' => 1,
-      ),
-    );
-  }
-  
+function views_accelerator_render_file($value, $handler) {
+  $file_type = isset($value['type']) ? $value['type'] : '';
+  $format = $handler->options['type'];
+  $settings = $handler->options['settings'];
   $path = variable_get('file_public_path', conf_path() . '/files');
-  return array(
-    'raw' => $value,
-    'rendered' => array(
-       '#theme' => 'link',
-       '#options' => array('html' => FALSE, 'attributes' => array()),
-       '#path' =>  $path . '/' . $value['filename'],
-       '#text' => $value['filename'],
-       '#html' => FALSE,
-       '#access' => 1,
-    ),
-  );
+
+  if (($format == 'file_rendered' || $format == 'image') && (empty($file_type) || $file_type == 'image')) {
+    $image_style = NULL;
+    if (isset($settings['image_style'])) {
+      $image_style = $settings['image_style'];
+    }
+    elseif (isset($settings['file_view_mode'])) {
+      // Normally, using a complicated process invovling the likes of
+      // image_file_default_displays_alter() the view mode gets converted into a
+      // an image_style. Here, we keep things ultra-simple.
+      // Typcial image_styles are thumbnail', 'medium', 'large', with the
+      // associated images sourced from subdirs by those names, e.g.,
+      // /default/files/styles/thumbnail, default/files/styles/medium.
+      // A 'default' view mode displays the original images, unprocessed, from
+      // /default/files
+      switch ($settings['file_view_mode']) {
+        case 'preview':
+          $image_style = 'thumbnail';
+          break;
+        case 'teaser':
+          $image_style = 'medium';
+          break;
+      }
+    }
+    $rendered = array(
+      '#theme' => 'image_formatter',
+      '#image_style' => $image_style,
+      '#item' => $value,
+      '#access' => 1,
+    );
+    if ($format == 'file_rendered') {
+      $rendered['#path'] = array('path' => 'file/' . $value['fid'] );
+    }
+    elseif ($settings['image_link'] == 'file') {
+      $rendered['#path'] = array('path' => $path . '/' . $value['filename']);
+    }
+    elseif ($settings['image_link'] == 'content' && isset($value['nid'])) {
+      $rendered['#path'] = array('path' => 'node/' . $value['nid']);
+    }
+  }
+  else {
+    // Covers $format == 'file_url_plain', 'file_default' ("Generic file")
+    // Also handles 'file_download_link' and 'file_rendered' for PDF etc.
+    $rendered = array(
+      '#theme' => 'link',
+      // Make sure check_plain() is called in theme_link() by using 'html'=>FALSE
+      '#options' => array('html' => FALSE, 'attributes' => array()),
+      '#path' => $path . '/' . $value['filename'],
+      '#text' => $value['filename'],
+      '#html' => FALSE,
+      '#access' => 1,
+    );
+    if ($format == 'file_download_link') {
+      $rendered['#theme'] = 'file_entity_download_link';
+      $rendered['#text'] = $settings['text'];
+      $rendered['#file'] = (object) $value;
+    }
+  }
+  return array('raw' => $value, 'rendered' => $rendered);
 }
 
 /**
@@ -349,7 +412,7 @@ function views_accelerator_analyse($message = NULL, $type = 'status', $repeat = 
 }
 
 /**
- * Record performance stats for the view and optionally field passed in.
+ * Record performance stats for the view and optionally the field passed in.
  *
  * @param object $view
  *   The view whose stats are to be set. Or empty to return existing records.
