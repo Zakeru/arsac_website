@@ -2,6 +2,9 @@
   #preface-area .container { max-width: 940px; }
 }
 
+/* Título redundante de Vision y Mision */
+body.page-node-11 #content-wrap h1.page-title { display: none; } 
+
 #block-views-vista-de-civil-block-2, #block-views-vista-de-civil-block { display: none; }
 #block-block-1, #block-block-2, #block-block-3 { cursor: pointer; }
 /*
@@ -68,4 +71,44 @@
 #block-block-1, #block-block-2, #block-block-3 { 
   margin-bottom: 0;
   height: 192px;
+}
+
+/* Tabla del Sistema Integrado */
+
+#block-system-main table#summary_about_us tbody tr td.rtecenter { 
+  background-color: #d7e293;
+  border: 1px solid #b1c65d;
+  font-weight: bold;
+}
+
+table#summary_about_us tbody tr:first-child + tr td { 
+  background-color: #e4dfa7;
+  border-right: 1px solid #efc677
+}
+table#summary_about_us tbody tr:first-child + tr + tr td { 
+  background-color: #e7deb3; 
+  border-top: 1px solid #eec5a9;
+  border-right: 1px solid #eec5a9;
+}
+
+table#summary_about_us tbody tr:first-child + tr + tr + tr td { 
+  background-color: #e0e9b4;
+  border-top: 1px solid #b3b989;
+  border-right: 1px solid #b3b989;
+}
+
+#block-system-main .content .content .field-name-body .field-items .field-item .our-service {
+  float: left;
+  width: 50%;
+  min-height: 300px;
+}
+
+#block-system-main .content .content .field-name-body .field-items .field-item .our-service h2 { text-decoration: underline; }
+#block-system-main .content .content .field-name-body .field-items .field-item .our-service ul li {
+  background: url(../images/marker2.gif) no-repeat 0 3px;
+  list-style: none;
+  list-style-image: none;
+  list-style-type: none;
+  padding-left: 30px;
+  text-align: justify;
 }
