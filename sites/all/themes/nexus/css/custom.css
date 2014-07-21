@@ -4,6 +4,12 @@
 
 /* Título redundante de Vision y Mision */
 body.page-node-11 #content-wrap h1.page-title { display: none; } 
+#second-logo {
+  min-height: 121px;
+  padding: 24px;
+  padding-left: 42px;
+}
+#main-menu ul li { font-size: 15px; }
 
 #block-views-vista-de-civil-block-2, #block-views-vista-de-civil-block { display: none; }
 #block-block-1, #block-block-2, #block-block-3 { cursor: pointer; }
