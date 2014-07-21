@@ -75,9 +75,7 @@
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>"><?php print $site_name; ?></a>
         </h1>
       </div>
-      <div class="col-sm-2" id="second-logo">
-        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/logo-sgs.png' ?>" alt="<?php print t('sgs'); ?>" />
-      </div>
+      
       <div class="col-sm-7 mainmenu">
         <div class="mobilenavi"></div>
         <nav id="navigation" role="navigation">
@@ -92,6 +90,10 @@
             ?>
           </div>
         </nav>
+      </div>
+
+      <div class="col-sm-2" id="second-logo">
+        <img src="<?php print base_path() . drupal_get_path('theme', 'nexus') . '/images/logo-sgs.png' ?>" alt="<?php print t('sgs'); ?>" />
       </div>
     </div>
   </header>
